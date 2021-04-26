@@ -54,6 +54,28 @@ public:
 		return str;
 	}
 
+
+	LinkedList<T>& operator +(LinkedList& other) {
+		if (head == nullptr) {
+			return other;
+		}
+		else if (other.head == nullptr) {
+			return *this;
+		}else{
+
+			last = other.head;
+			while (last->next != nullptr)
+				last = last->next;
+
+			last->next = nullptr;
+			return *this;
+		}
+	}
+
+	LinkedList<T>& concatenate(LinkedList& other) {
+		return head + other;
+	}
+
 	void addNode(const T data) {
 
 		Node<T>* newnode = new Node<T>();
