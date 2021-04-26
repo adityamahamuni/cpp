@@ -49,6 +49,11 @@ public:
 		}
 	}
 
+	friend std::ostream& operator<<(std::ostream& str, LinkedList& data) {
+		data.display(str);
+		return str;
+	}
+
 	void addNode(const T data) {
 
 		Node<T>* newnode = new Node<T>();
@@ -135,16 +140,11 @@ public:
 		}
 	}
 
-	friend std::ostream& operator<<(std::ostream& str, LinkedList& data) {
-		data.display(str);
-		return str;
-	}
-
 	void insert(T val, int pos = 0) {
 
 		try {
 			if (pos < 0 || pos > size())
-				throw(LinkedListException("Index out of range."));
+				throw(LinkedListException("LinkedList Exception: Index out of range."));
 		}
 		catch (const LinkedListException& me) {
 			std::cout << me.what() << std::endl;
@@ -190,7 +190,7 @@ public:
 
 		try {
 			if (pos < 0 || pos > size())
-				throw(LinkedListException("Index out of range."));
+				throw(LinkedListException("LinkedList Exception: Index out of range."));
 		}
 		catch (const LinkedListException& me) {
 			std::cout << me.what() << std::endl;
@@ -207,17 +207,60 @@ public:
 		}
 		else if (pos > 0) {
 			p = head;
-			for (int i = 0; i < pos - 1 && p; i++) {
+			for (int i = 0; i <= pos - 1 && p; i++) {
 				temp = p;
 				p = p->next;
 			}
 			temp->next = p->next;
 			x = temp->data;
-
 			delete p;
 			return x;
 		}
 		return NULL;
+	}
+
+	bool isSorted() {
+		if (head == nullptr) {
+			std::cout << "List is empty!\n";
+			return false;
+		}
+		else {
+			Node<T>* temp = head;
+			T x = NULL;
+			while (temp != nullptr) {
+				if (temp->data < x) { return false; }
+				x = temp->data;
+				temp = temp->next;				
+			}
+		}
+		return true;
+	}
+
+	void removeDuplicates() {
+		try {
+			if (isSorted()) {
+				Node<T>* temp = head;
+				Node<T>* p = head->next;
+
+				while (p != nullptr) {
+					if (temp->data != p->data) {
+						temp = p;
+						p = p->next;
+					}
+					else {
+						temp->next = p->next;
+						delete p;
+						p = temp->next;
+					}
+				}
+			}
+			else {
+				throw(LinkedListException("LinkedList Exception: LinkedList is not Sorted."));
+			}
+		}
+		catch (const LinkedListException& me) {
+			std::cout << me.what() << std::endl;
+		}
 	}
 
 };
