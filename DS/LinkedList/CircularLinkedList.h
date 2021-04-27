@@ -32,7 +32,7 @@ public:
 	}
 	~CircularLinkedList() {}
 
-	void addNode(T val) {
+	void addNode(const T val) {
 		Node<T>* newnode = new Node<T>();
 		newnode->data = std::move(val);
 		newnode->next = head;
