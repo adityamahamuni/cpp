@@ -1,6 +1,7 @@
 #include<iostream>
 #include"LinkedList.h"
 #include"CircularLinkedList.h"
+#include"DoublyLinkedList.h"
 
 
 int main(int argc, const char* argv[]) {
@@ -78,6 +79,17 @@ int main(int argc, const char* argv[]) {
 
 	clist1.remove(3);
 	clist1.display();
+
+
+	std::cout << "\n********* Doubly Linked List ***************" << std::endl;
+	DoublyLinkedList<int> dlist;
+	dlist.addNode(500);
+	dlist.addNode(700);
+	dlist.addNode(25);
+
+	dlist.display();
+
+	std::cout << "Size of List : " << dlist.size() << std::endl;
 
 	return 0;
 }
