@@ -39,19 +39,43 @@ public:
 	}
 
 	
-	~LinkedList(){
-		Node<T>* nodePtr = head;
-		while (nodePtr != nullptr) {
-			Node<T>* nextNode = nodePtr->next;
-			delete nodePtr;
-
-			nodePtr = nextNode;
-		}
-	}
+	~LinkedList(){}
 
 	friend std::ostream& operator<<(std::ostream& str, LinkedList& data) {
 		data.display(str);
 		return str;
+	}
+
+
+	LinkedList<T>& operator +(LinkedList& other) {
+		if (head == nullptr) {
+			return other;
+		}
+		else if (other.head == nullptr) {
+			return *this;
+		}
+		else {
+			LinkedList<T> result;
+			result.head = head;
+			Node<T>* temp = result.head;
+
+			while (temp->next != nullptr)
+				temp = temp->next;
+
+			temp->next = other.head;
+			while (temp->next != nullptr)
+				temp = temp->next;
+
+			temp->next = nullptr;
+			result.last = temp;
+
+			return result;
+		}
+	}
+
+
+	LinkedList<T>& concatenate(LinkedList& other) {
+		return head + other;
 	}
 
 	void addNode(const T data) {
