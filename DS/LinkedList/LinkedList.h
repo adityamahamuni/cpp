@@ -4,6 +4,7 @@
 
 #include<iostream>
 #include<exception>
+#include"Node.h"
 
 
 class LinkedListException : virtual public std::exception {
@@ -18,14 +19,6 @@ public:
 	}
 };
 
-
-template <class T>
-class Node {
-public:
-	T data;
-	Node<T>* next;
-};
-
 template <class T>
 class LinkedList {
 private:
@@ -38,14 +31,12 @@ public:
 		addNode(data);
 	}
 
-	
-	~LinkedList(){}
+	~LinkedList() {}
 
 	friend std::ostream& operator<<(std::ostream& str, LinkedList& data) {
 		data.display(str);
 		return str;
 	}
-
 
 	LinkedList<T>& operator +(LinkedList& other) {
 		if (head == nullptr) {
@@ -72,7 +63,6 @@ public:
 			return result;
 		}
 	}
-
 
 	LinkedList<T>& concatenate(LinkedList& other) {
 		return head + other;
