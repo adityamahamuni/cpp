@@ -86,10 +86,18 @@ int main(int argc, const char* argv[]) {
 	dlist.addNode(500);
 	dlist.addNode(700);
 	dlist.addNode(25);
+	dlist.insert(50, 2);
+	dlist.insert(70, 1);
 
 	dlist.display();
 
 	std::cout << "Size of List : " << dlist.size() << std::endl;
+
+	dlist.remove(1);
+	dlist.display();
+
+	dlist.push_back(20);
+	dlist.display();
 
 	return 0;
 }
