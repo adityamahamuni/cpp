@@ -65,12 +65,19 @@ int main(int argc, const char* argv[]) {
 
 	concateList.display();
 
-	std::cout << "********* Circular Linked List ***************" << std::endl;
+	std::cout << "\n********* Circular Linked List ***************" << std::endl;
 	CircularLinkedList<int> clist1;
 	clist1.addNode(100);
+	clist1.addNode(2);
+	clist1.addNode(500);
+	clist1.insert(50, 1);
 
 	clist1.display();
 
-	return 0;
+	std::cout << "Size of List : " << clist1.size() << std::endl;
 
+	clist1.remove(3);
+	clist1.display();
+
+	return 0;
 }
