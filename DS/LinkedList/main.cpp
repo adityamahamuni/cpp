@@ -1,8 +1,11 @@
 #include<iostream>
 #include"LinkedList.h"
+#include"CircularLinkedList.h"
 
 
 int main(int argc, const char* argv[]) {
+
+	std::cout << "********* Singly Linked List ***************" << std::endl;
 	LinkedList<int> list;
 	list.addNode(100);
 
@@ -53,15 +56,28 @@ int main(int argc, const char* argv[]) {
 
 	std::cout << "\nConcatenate Linked Lists" << std::endl;
 	LinkedList<int> list2;
-	list.addNode(1000);
-	list.addNode(1100);
-	list.addNode(1200);
+	list2.addNode(1000);
+	list2.addNode(1100);
+	list2.addNode(1200);
 
 	LinkedList<int> concateList;
 	concateList = list + list2;
 
 	concateList.display();
 
-	return 0;
+	std::cout << "\n********* Circular Linked List ***************" << std::endl;
+	CircularLinkedList<int> clist1;
+	clist1.addNode(100);
+	clist1.addNode(2);
+	clist1.addNode(500);
+	clist1.insert(50, 1);
 
+	clist1.display();
+
+	std::cout << "Size of List : " << clist1.size() << std::endl;
+
+	clist1.remove(3);
+	clist1.display();
+
+	return 0;
 }
