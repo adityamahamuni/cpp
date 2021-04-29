@@ -54,5 +54,22 @@ int main() {
 	std::cout << "Elements of Queue : " << std::endl;
 	qDb.display();
 
+
+	std::cout << " *********Queue using Stacks************* " << std::endl;
+	QueueStk<int> qStk(10);
+	qStk.enqueue(10);
+	qStk.enqueue(20);
+	qStk.enqueue(30);
+
+	std::cout << "Elements of Queue : " << std::endl;
+	qStk.display();
+
+	std::cout << "Removed Element : " << qStk.dequeue() << std::endl;
+	std::cout << "Removed Element : " << qStk.dequeue() << std::endl;
+
+	std::cout << "Elements of Queue : " << std::endl;
+	qStk.display();
+
+
 	return 0;
 }

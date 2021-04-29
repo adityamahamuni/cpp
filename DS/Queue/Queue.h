@@ -4,6 +4,7 @@
 
 #include<iostream>
 #include<exception>
+#include"Stack.h"
 
 
 class QueueException : virtual public std::exception {
@@ -76,6 +77,35 @@ public:
 	~Queue() {
 		delete[] qArr;
 	}
+};
+
+template <class T>
+class QueueStk {
+private:
+	int size;
+	Stack<T> enqeueStk = Stack<T>(size);
+	Stack<T> deqeueStk = Stack<T>(size);
+
+public:
+	QueueStk() : size(-1) {}
+	QueueStk(int size) : size(size) {}
+
+	void enqueue(T data) {
+		enqeueStk.push(data);
+	}
+
+	T dequeue() {
+		if (deqeueStk.isEmpty())
+			while (!(enqeueStk.isEmpty()))
+				deqeueStk.push(enqeueStk.pop());
+		return deqeueStk.pop();
+	}
+
+	void display() {
+		deqeueStk.display();
+		enqeueStk.display();
+	}
+
 };
 
 #endif // !_QUEUE_H_
