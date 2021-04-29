@@ -22,7 +22,6 @@ template <class T>
 class Queue {
 private:
 	int size;
-	T data;
 	int front;
 	int rear;
 	T* qArr;
@@ -34,7 +33,7 @@ public:
 	}
 
 	bool isFull() { return (rear == (size - 1)); }
-	bool isEmpty() { return (size == -1); }
+	bool isEmpty() { return (front == rear); }
 
 	void enqueue(T data) {
 		try {
