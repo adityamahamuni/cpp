@@ -15,6 +15,14 @@ int main() {
 	std::cout << "Elements of Binary Search Tree : (inorder traversal) " << std::endl;
 	tree.display();
 
+	std::cout << "Elements of Binary Search Tree : (pre-order traversal) " << std::endl;
+	tree.preorder();
+	std::cout << "Elements of Binary Search Tree : (post-order traversal) " << std::endl;
+	tree.postorder();
+
+	std::cout << "Elements of Binary Search Tree : (level-order traversal) " << std::endl;
+	tree.levelorder();
+
 	tree.remove(20);
 
 	std::cout << "Elements of Binary Search Tree : " << std::endl;

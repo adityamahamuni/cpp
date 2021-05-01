@@ -4,7 +4,22 @@
 
 #include<iostream>
 #include<exception>
+#include"Queue.h"
 
+
+enum NODE_CHILD { L, R };
+
+class TreeException : virtual public std::exception {
+	std::string msg;
+
+public:
+	TreeException(std::string msg) : msg(msg) {}
+
+	virtual ~TreeException() throw() {}
+	virtual const char* what() const throw() {
+		return msg.c_str();
+	}
+};
 
 template <class T>
 struct node {
@@ -58,6 +73,60 @@ public:
 		inorder(nodePtr->right);
 	}
 
+	void inorder() {
+		inorder(root);
+		std::cout << std::endl;
+	}
+
+	void preorder(node<T>* nodePtr) {
+		if (nodePtr == nullptr)
+			return;
+		std::cout << nodePtr->data << " ";
+		preorder(nodePtr->left);
+		preorder(nodePtr->right);
+	}
+
+	void preorder() {
+		preorder(root);
+		std::cout << std::endl;
+	}
+
+	void postorder(node<T>* nodePtr) {
+		if (nodePtr == nullptr)
+			return;
+		postorder(nodePtr->left);
+		postorder(nodePtr->right);
+		std::cout << nodePtr->data << " ";
+	}
+
+	void postorder() {
+		postorder(root);
+		std::cout << std::endl;
+	}
+	
+	void levelorder(node<T> * nodePtr) {
+		Queue<node<T>*> q(100);
+		std::cout << root->data << " ";
+
+		q.enqueue(nodePtr);
+		while (!q.isEmpty()) {
+			nodePtr = q.dequeue();
+			if (nodePtr->left) {
+				std::cout << nodePtr->left->data << " ";
+				q.enqueue(nodePtr->left);
+			}
+			if (nodePtr->right) {
+				std::cout << nodePtr->right->data << " ";
+				q.enqueue(nodePtr->right);
+			}
+		}
+	}
+
+	void levelorder() {
+		levelorder(root);
+		std::cout << std::endl;
+	}
+	
 	void insert(T data) {
 		root = insert(data, root);
 	}
