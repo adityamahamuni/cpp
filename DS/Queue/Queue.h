@@ -57,8 +57,7 @@ public:
 			}
 			else {
 				T temp;
-				front++;
-				temp = qArr[front];
+				temp = qArr[front++];
 				return temp;
 			}
 		}
