@@ -23,6 +23,8 @@ int main() {
 	std::cout << "Elements of Binary Search Tree : (level-order traversal) " << std::endl;
 	tree.levelorder();
 
+	tree.search(10);
+
 	tree.remove(20);
 
 	std::cout << "Elements of Binary Search Tree : " << std::endl;

@@ -186,6 +186,27 @@ public:
 		root = remove(data, root);
 	}
 
+	bool search(T data, node<T>* nodePTr) {
+		if (nodePTr == nullptr)
+			return false;
+		else {
+			if (data == nodePTr->data)
+				return true;
+			else if (data < nodePTr->data)
+				return search(data, nodePTr->left);
+			else if (data > nodePTr->data)
+				return search(data, nodePTr->right);
+		}
+		return false;
+	}
+
+	void search(T data) {
+		if (search(data, root))
+			std::cout << "Element " << data << " found in the Binary Search Tree." << std::endl;
+		else
+			std::cout << "Element " << data << " not found in the Binary Search Tree." << std::endl;
+	}
+
 };
 
 #endif // !_TREES_H_
