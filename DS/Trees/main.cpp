@@ -43,8 +43,12 @@ int main() {
 	std::cout << "\n ************* AVL Tree************ " << std::endl;
 	AVLTree<int> avltree;
 	avltree.insert(10);
-	avltree.insert(5);
 	avltree.insert(20);
+	avltree.insert(30);
+	avltree.insert(25);
+	avltree.insert(28);
+	avltree.insert(27);
+	avltree.insert(5);
 
 	std::cout << "\nElements of AVL Tree (inorder traversal) : " << std::endl;
 	avltree.display();
@@ -54,12 +58,19 @@ int main() {
 	std::cout << "\nElements of AVL Tree (post-order traversal) : " << std::endl;
 	avltree.postorder();
 
+	std::cout << "Removed Data : " << avltree.remove(5) << std::endl;
+	std::cout << "\nElements of AVL Tree (inorder traversal) : " << std::endl;
+	avltree.display();
 
 	std::cout << "\n ******** LL Rotation of AVL Tree *********** " << std::endl;
 	AVLTree<int> llRotate;
 
-	llRotate.insert(20);
 	llRotate.insert(10);
+	llRotate.insert(20);
+	llRotate.insert(30);
+	llRotate.insert(25);
+	llRotate.insert(28);
+	llRotate.insert(27);
 	llRotate.insert(5);
 
 	std::cout << "\nElements of AVL Tree : " << std::endl;
