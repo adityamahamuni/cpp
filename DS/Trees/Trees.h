@@ -29,12 +29,12 @@ struct node {
 };
 
 template <class T>
-class BinaryTree {
+class BinarySearchTree {
 
 public:
 	node<T>* root;
 
-	BinaryTree() : root(nullptr) {}
+	BinarySearchTree() : root(nullptr) {}
 	
 	node<T>* createEmpty(node<T>* nodePtr) {
 		if (nodePtr == nullptr) {
@@ -207,6 +207,9 @@ public:
 			std::cout << "Element " << data << " not found in the Binary Search Tree." << std::endl;
 	}
 
+	~BinarySearchTree() {
+		createEmpty(root);
+	}
 };
 
 #endif // !_TREES_H_

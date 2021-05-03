@@ -4,7 +4,7 @@
 int main() {
 
 	std::cout << " ************* Binary Search Tree************ " << std::endl;
-	BinaryTree<int> tree;
+	BinarySearchTree<int> tree;
 
 	tree.insert(20);
 	tree.insert(10);
