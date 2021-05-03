@@ -38,5 +38,62 @@ int main() {
 	std::cout << "Elements of Binary Search Tree : " << std::endl;
 	tree.display();
 
+
+
+	std::cout << "\n ************* AVL Tree************ " << std::endl;
+	AVLTree<int> avltree;
+	avltree.insert(10);
+	avltree.insert(5);
+	avltree.insert(20);
+
+	std::cout << "\nElements of AVL Tree (inorder traversal) : " << std::endl;
+	avltree.display();
+
+	std::cout << "\nElements of AVL Tree (pre-order traversal) : " << std::endl;
+	avltree.preorder();
+	std::cout << "\nElements of AVL Tree (post-order traversal) : " << std::endl;
+	avltree.postorder();
+
+
+	std::cout << "\n ******** LL Rotation of AVL Tree *********** " << std::endl;
+	AVLTree<int> llRotate;
+
+	llRotate.insert(20);
+	llRotate.insert(10);
+	llRotate.insert(5);
+
+	std::cout << "\nElements of AVL Tree : " << std::endl;
+	llRotate.display();
+
+	std::cout << "\n ******** LR Rotation of AVL Tree *********** " << std::endl;
+	AVLTree<int> lrRotate;
+
+	lrRotate.insert(30);
+	lrRotate.insert(10);
+	lrRotate.insert(20);
+
+	std::cout << "\nElements of AVL Tree (inorder traversal) : " << std::endl;
+	lrRotate.display();
+
+	std::cout << "\n ******** RR Rotation of AVL Tree *********** " << std::endl;
+	AVLTree<int> rrRotate;
+
+	rrRotate.insert(10);
+	rrRotate.insert(20);
+	rrRotate.insert(50);
+
+	std::cout << "\nElements of AVL Tree (inorder traversal) : " << std::endl;
+	rrRotate.display();
+
+	std::cout << "\n ******** RL Rotation of AVL Tree *********** " << std::endl;
+	AVLTree<int> rlRotate;
+
+	rlRotate.insert(10);
+	rlRotate.insert(30);
+	rlRotate.insert(20);
+
+	std::cout << "\nElements of AVL Tree (inorder traversal) : " << std::endl;
+	rlRotate.display();
+
 	return 0;
 }
