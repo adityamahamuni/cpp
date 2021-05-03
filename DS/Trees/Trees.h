@@ -361,6 +361,78 @@ public:
 		root = insert(data, root);
 	}
 
+	avlNode<T>* remove(T data, avlNode<T>* nodePtr) {
+		if (nodePtr == nullptr) {
+			return nullptr;
+		}
+
+		if (nodePtr->left == nullptr && nodePtr->right == nullptr) {
+			if (nodePtr == root)
+				root = nullptr;
+			delete nodePtr;
+			return nullptr;
+		}
+
+		if (data < nodePtr->data)
+			nodePtr->left = remove(data, nodePtr->left);
+		else if (data > nodePtr->data)
+			nodePtr->right = remove(data, nodePtr->right);
+		else {
+			avlNode<T>* temp;
+
+			if (nodeHeight(nodePtr->left) > nodeHeight(nodePtr->right)) {
+				while (nodePtr && nodePtr->right != nullptr)
+					nodePtr = nodePtr->right;
+
+				temp = nodePtr->left;
+				nodePtr->data = temp->data;
+				nodePtr->left = remove(temp->data, nodePtr->left);
+			}
+			else {
+				while (nodePtr && nodePtr->left != nullptr)
+					nodePtr = nodePtr->left;
+
+				temp = nodePtr->right;
+				nodePtr->data = temp->data;
+				nodePtr->right = remove(temp->data, nodePtr->right);
+			}
+		}
+
+		nodePtr->height = nodeHeight(nodePtr);
+
+		// Balancing the Tree
+
+		// L1 Roatation
+		if (balanceFactor(nodePtr) == 2 && balanceFactor(nodePtr->left) == 1)
+			return LLRotation(nodePtr);
+
+		// L-1 Rotation
+		else if (balanceFactor(nodePtr) == 2 && balanceFactor(nodePtr->left) == -1)
+			return LRRotation(nodePtr);
+
+		// R-1 Rotation
+		else if (balanceFactor(nodePtr) == -2 && balanceFactor(nodePtr->right) == -1)
+			return RRRotation(nodePtr);
+
+		// R1 Rotation
+		else if (balanceFactor(nodePtr) == -2 && balanceFactor(nodePtr->right) == 1)
+			return RLRotation(nodePtr);
+
+		// L0 Rotation
+		else if (balanceFactor(nodePtr) == 2 && balanceFactor(nodePtr->left) == 0)
+			return LLRotation(nodePtr);
+
+		// R0 Rotation
+		else if (balanceFactor(nodePtr) == -2 && balanceFactor(nodePtr->right) == 0)
+			return RRRotation(nodePtr);
+
+		return nodePtr;
+	}
+
+	avlNode<T>* remove(T data) {
+		return remove(data, root);
+	}
+
 	void inorder(avlNode<T>* nodePtr) {
 		if (nodePtr == nullptr)
 			return;
