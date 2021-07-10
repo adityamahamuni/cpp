@@ -1,11 +1,6 @@
 #pragma once
-<<<<<<< HEAD
-#ifndef BFS_H_
-#define BFS_H_
-=======
 #ifndef _TREE_TRAVERSAL_H_
 #define _TREE_TRAVERSAL_H_
->>>>>>> BFS Tree Traversal
 
 #include<iostream>
 #include<vector>
@@ -36,9 +31,6 @@ void BFS(std::vector<std::vector<int>> graph, int start, int n) {
 	}
 }
 
-<<<<<<< HEAD
-#endif // !BFS_H_
-=======
 void DFS(std::vector<std::vector<int>> graph, int start, const int n) {
 
 	static std::vector<int> visited (n, 0);
@@ -56,5 +48,4 @@ void DFS(std::vector<std::vector<int>> graph, int start, const int n) {
 }
 
 #endif // !_TREE_TRAVERSAL_H_
->>>>>>> BFS Tree Traversal
 
